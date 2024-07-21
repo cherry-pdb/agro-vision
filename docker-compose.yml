@@ -1,0 +1,23 @@
+﻿services:
+  agro-vision.server:
+    image: agrovision.server
+    network_mode: host
+    container_name: agrovision.server
+    restart: always
+    build:
+      context: .
+      dockerfile: AgroVision.Server/Dockerfile
+  
+  postgres:
+    image: "postgres:latest"
+    hostname: postgres
+    container_name: postgres
+    network_mode: host
+    restart: always
+    volumes:
+      - /postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "AgroVisionDb"
+      PG_DATA: "/var/lib/postgresql/data"

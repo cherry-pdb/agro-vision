@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  agro-vision.server:
+    build:
+      context: "C:\\Users\\Mark\\Documents\\C#\\AgroVision\\AgroVision"
+      dockerfile: "AgroVision.Server/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/AgroVision.Server.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "agrovision.server:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\Mark\\.nuget\\packages:/home/app/.nuget/packages"
+    - "C:\\Users\\Mark\\Documents\\C#\\AgroVision\\AgroVision\\AgroVision.Server:/app:rw"
+    - "C:\\Users\\Mark\\Documents\\C#\\AgroVision\\AgroVision:/src:rw"
+    working_dir: "/app"

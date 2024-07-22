@@ -18,13 +18,15 @@ public class DatabaseFiller
 
     public async void FillDatabaseAsync(string filepath)
     {
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         using var package = new ExcelPackage(new FileInfo(filepath));
         var worksheet = package.Workbook.Worksheets["2022"];
-        const int rowCount = 30;
+        const int rowCount = 31;
 
         for (var row = 4; row < rowCount; row++)
         {
             var id = Guid.NewGuid();
+            var districtId = int.Parse(worksheet.Cells[row, 1].Value.ToString());
             var districtName = worksheet.Cells[row, 2].Value.ToString();
             var mobilePhosphorus = double.Parse(worksheet.Cells[row, 4].Value.ToString());
             var mobileKalium = double.Parse(worksheet.Cells[row, 5].Value.ToString());
@@ -39,6 +41,7 @@ public class DatabaseFiller
 
             var agrochemicalCharacteristic = new AgrochemicalСharacteristicsDb(
                 id,
+                districtId,
                 districtName,
                 mobilePhosphorus,
                 mobileKalium,
@@ -50,15 +53,12 @@ public class DatabaseFiller
                 openGroundVegetablesYield,
                 srup,
                 soilGradation);
-
-            if (!await _dbContext.AgrochemicalСharacteristics.AnyAsync(ac => ac.DistrictName == districtName))
-            {
-                await _dbContext.AgrochemicalСharacteristics.AddAsync(agrochemicalCharacteristic);
-                Console.WriteLine($"{districtName} added");
-            }
+            
+            await _dbContext.AgrochemicalСharacteristics.AddAsync(agrochemicalCharacteristic);
+            Console.WriteLine($"{districtName} added");
 
         } 
-        await _dbContext.SaveChangesAsync();
+        _dbContext.SaveChanges();
         Console.WriteLine("saved in db");
     }
 }

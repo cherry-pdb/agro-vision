@@ -4,6 +4,8 @@ public class AgrochemicalCharacteristicsCore
 {
     public Guid Id { get; set; }
     
+    public int DistrictId { get; set; }
+    
     public string DistrictName { get; set; }
     
     public double MobilePhosphorus { get; set; }
@@ -28,6 +30,7 @@ public class AgrochemicalCharacteristicsCore
 
     public AgrochemicalCharacteristicsCore(
         Guid id,
+        int districtId,
         string districtName,
         double mobilePhosphorus,
         double mobileKalium,
@@ -41,6 +44,7 @@ public class AgrochemicalCharacteristicsCore
         string soilGradation)
     {
         Id = id;
+        DistrictId = districtId;
         DistrictName = districtName;
         MobilePhosphorus = mobilePhosphorus;
         MobileKalium = mobileKalium;

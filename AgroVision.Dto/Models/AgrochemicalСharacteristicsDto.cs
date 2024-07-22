@@ -10,6 +10,10 @@ public class AgrochemicalСharacteristicsDto
     public Guid Id { get; set; }
     
     [Required]
+    [DataMember(Name = "districtId")]
+    public int DistrictId { get; set; }
+    
+    [Required]
     [DataMember(Name = "districtName")]
     public string DistrictName { get; set; }
     
@@ -55,6 +59,7 @@ public class AgrochemicalСharacteristicsDto
 
     public AgrochemicalСharacteristicsDto(
         Guid id,
+        int districtId,
         string districtName,
         double mobilePhosphorus,
         double mobileKalium,
@@ -68,6 +73,7 @@ public class AgrochemicalСharacteristicsDto
         string soilGradation)
     {
         Id = id;
+        DistrictId = districtId;
         DistrictName = districtName;
         MobilePhosphorus = mobilePhosphorus;
         MobileKalium = mobileKalium;

@@ -10,6 +10,7 @@ public static class AgrochemicalCharacteristicConverter
             ? null
             : new AgrochemicalCharacteristicsCore(
                 agrochemicalСharacteristicsDto.Id,
+                agrochemicalСharacteristicsDto.DistrictId,
                 agrochemicalСharacteristicsDto.DistrictName,
                 agrochemicalСharacteristicsDto.MobilePhosphorus,
                 agrochemicalСharacteristicsDto.MobileKalium,
@@ -27,6 +28,7 @@ public static class AgrochemicalCharacteristicConverter
             ? null
             : new AgrochemicalСharacteristicsDto(
                 agrochemicalСharacteristicsCore.Id,
+                agrochemicalСharacteristicsCore.DistrictId,
                 agrochemicalСharacteristicsCore.DistrictName,
                 agrochemicalСharacteristicsCore.MobilePhosphorus,
                 agrochemicalСharacteristicsCore.MobileKalium,

@@ -18,6 +18,7 @@ public class DatabaseFiller
 
     public async void FillDatabaseAsync(string filepath)
     {
+        TruncateTable();
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         using var package = new ExcelPackage(new FileInfo(filepath));
         var worksheet = package.Workbook.Worksheets["2022"];
@@ -60,5 +61,10 @@ public class DatabaseFiller
         } 
         _dbContext.SaveChanges();
         Console.WriteLine("saved in db");
+    }
+
+    public void TruncateTable()
+    {
+        _dbContext.Database.ExecuteSql($"TRUNCATE TABLE \"AgrochemicalСharacteristics\"");
     }
 }

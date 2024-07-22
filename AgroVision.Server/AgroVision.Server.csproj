@@ -97,6 +97,12 @@
       </PackageReference>
       <PackageReference Include="Npgsql" Version="8.0.3" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+      <PackageReference Include="Serilog" Version="4.0.0" />
+      <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+      <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+      <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.2" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+      <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.2" />
       <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.6.2" />

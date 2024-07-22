@@ -3,6 +3,7 @@ using AgroVision.Dto.Converters;
 using AgroVision.Dto.Enums;
 using AgroVision.Dto.Models;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace AgroVision.Server.Controllers;
 
@@ -22,6 +23,8 @@ public class AgrochemicalCharacteristicsController : ControllerBase
     }
 
     [HttpGet("{sortedNumber:int}")]
+    [SwaggerResponse(statusCode: 200, description: "Действие успешно.")]
+    [SwaggerResponse(statusCode: 500, description: "Ошибка на стороне сервера.")]
     public async Task<IActionResult> GetAgrochemicalCharacteristicsAsync(int sortedNumber)
     {
         try
@@ -62,6 +65,9 @@ public class AgrochemicalCharacteristicsController : ControllerBase
     }
     
     [HttpGet("{id:guid}")]
+    [SwaggerResponse(statusCode: 200, description: "Действие успешно.")]
+    [SwaggerResponse(statusCode: 404, description: "Неверный идентификатор.")]
+    [SwaggerResponse(statusCode: 500, description: "Ошибка на стороне сервера.")]
     public async Task<IActionResult> GetAgrochemicalCharacteristicByIdAsync([FromRoute] Guid id)
     {
         try
@@ -87,6 +93,9 @@ public class AgrochemicalCharacteristicsController : ControllerBase
     }
     
     [HttpGet("{distinctName}")]
+    [SwaggerResponse(statusCode: 200, description: "Действие успешно.")]
+    [SwaggerResponse(statusCode: 404, description: "Неверный идентификатор.")]
+    [SwaggerResponse(statusCode: 500, description: "Ошибка на стороне сервера.")]
     public async Task<IActionResult> GetAgrochemicalCharacteristicByDistinctNameAsync([FromRoute] string distinctName)
     {
         try
@@ -112,6 +121,8 @@ public class AgrochemicalCharacteristicsController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
+    [SwaggerResponse(statusCode: 200, description: "Действие успешно.")]
+    [SwaggerResponse(statusCode: 500, description: "Ошибка на стороне сервера.")]
     public async Task<IActionResult> PutAgrochemicalCharacteristicByIdAsync(
         [FromRoute] Guid id,
         [FromBody] AgrochemicalСharacteristicsDto agrochemicalСharacteristicsDto)
@@ -140,6 +151,9 @@ public class AgrochemicalCharacteristicsController : ControllerBase
     }
 
     [HttpDelete("{id:guid}")]
+    [SwaggerResponse(statusCode: 200, description: "Действие успешно.")]
+    [SwaggerResponse(statusCode: 404, description: "Неверный идентификатор.")]
+    [SwaggerResponse(statusCode: 500, description: "Ошибка на стороне сервера.")]
     public async Task<IActionResult> DeleteAgrochemicalCharacteristicByIdAsync([FromRoute] Guid id)
     {
         try
@@ -164,6 +178,9 @@ public class AgrochemicalCharacteristicsController : ControllerBase
     }
     
     [HttpDelete("{distinctName}")]
+    [SwaggerResponse(statusCode: 200, description: "Действие успешно.")]
+    [SwaggerResponse(statusCode: 404, description: "Неверный идентификатор.")]
+    [SwaggerResponse(statusCode: 500, description: "Ошибка на стороне сервера.")]
     public async Task<IActionResult> DeleteAgrochemicalCharacteristicByDistinctNameAsync([FromRoute] string distinctName)
     {
         try

@@ -1,21 +1,26 @@
-﻿services:
-  agro-vision.server:
-    image: agrovision.server
-    network_mode: host
-    container_name: agrovision.server
+﻿version: '3.8'
+
+services:
+  agro-vision-server:
+    container_name: agrovision-server
     restart: always
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
     build:
       context: .
       dockerfile: AgroVision.Server/Dockerfile
   
-  postgres:
+  database:
     image: "postgres:latest"
     hostname: postgres
     container_name: postgres
-    network_mode: host
     restart: always
+    ports:
+      - "5432:5432"
     volumes:
-      - /postgres-data:/var/lib/postgresql/data
+      - ./pg_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
